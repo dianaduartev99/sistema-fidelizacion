@@ -1,0 +1,357 @@
+{
+  "info": {
+    "name": "Fidelizacion de Clientes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8000" }
+  ],
+  "item": [
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "Crear Cliente",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/clientes/",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan\",\n  \"apellido\": \"Pérez\",\n  \"numero_documento\": \"12345678\",\n  \"tipo_documento\": \"CI\",\n  \"nacionalidad\": \"Paraguaya\",\n  \"email\": \"juan.perez@email.com\",\n  \"telefono\": \"0981-123456\",\n  \"fecha_nacimiento\": \"1990-05-15\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar Clientes",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/clientes/"
+          }
+        },
+        {
+          "name": "Buscar Cliente por Nombre",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/clientes/buscar?nombre=Juan",
+              "query": [{ "key": "nombre", "value": "Juan" }]
+            }
+          }
+        },
+        {
+          "name": "Buscar por Cumpleaños (mes)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/clientes/buscar?cumpleanos_mes=5",
+              "query": [{ "key": "cumpleanos_mes", "value": "5" }]
+            }
+          }
+        },
+        {
+          "name": "Obtener Cliente por ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/clientes/1"
+          }
+        },
+        {
+          "name": "Actualizar Cliente",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/clientes/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"telefono\": \"0991-999999\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar Cliente",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/clientes/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Conceptos de Uso",
+      "item": [
+        {
+          "name": "Crear Concepto",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/conceptos-uso/",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"descripcion\": \"Vale de Premio\",\n  \"puntos_requeridos\": 100\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar Conceptos",
+          "request": { "method": "GET", "url": "{{base_url}}/conceptos-uso/" }
+        },
+        {
+          "name": "Obtener Concepto por ID",
+          "request": { "method": "GET", "url": "{{base_url}}/conceptos-uso/1" }
+        },
+        {
+          "name": "Actualizar Concepto",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/conceptos-uso/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"puntos_requeridos\": 150\n}" }
+          }
+        },
+        {
+          "name": "Eliminar Concepto",
+          "request": { "method": "DELETE", "url": "{{base_url}}/conceptos-uso/1" }
+        }
+      ]
+    },
+    {
+      "name": "Reglas de Asignacion",
+      "item": [
+        {
+          "name": "Crear Regla Rango 1 (0-199999)",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/reglas-asignacion/",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limite_inferior\": 0,\n  \"limite_superior\": 199999,\n  \"monto_equivalencia\": 50000\n}"
+            }
+          }
+        },
+        {
+          "name": "Crear Regla Rango 2 (200000-499999)",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/reglas-asignacion/",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limite_inferior\": 200000,\n  \"limite_superior\": 499999,\n  \"monto_equivalencia\": 30000\n}"
+            }
+          }
+        },
+        {
+          "name": "Crear Regla Rango 3 (500000+)",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/reglas-asignacion/",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limite_inferior\": 500000,\n  \"limite_superior\": null,\n  \"monto_equivalencia\": 20000\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar Reglas",
+          "request": { "method": "GET", "url": "{{base_url}}/reglas-asignacion/" }
+        },
+        {
+          "name": "Obtener Regla por ID",
+          "request": { "method": "GET", "url": "{{base_url}}/reglas-asignacion/1" }
+        },
+        {
+          "name": "Actualizar Regla",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/reglas-asignacion/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"monto_equivalencia\": 45000\n}" }
+          }
+        },
+        {
+          "name": "Eliminar Regla",
+          "request": { "method": "DELETE", "url": "{{base_url}}/reglas-asignacion/1" }
+        }
+      ]
+    },
+    {
+      "name": "Parametros Vencimiento",
+      "item": [
+        {
+          "name": "Crear Parametro Vencimiento",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/parametros-vencimiento/",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fecha_inicio_validez\": \"2025-01-01\",\n  \"fecha_fin_validez\": \"2025-12-31\",\n  \"dias_duracion\": 365\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar Parametros",
+          "request": { "method": "GET", "url": "{{base_url}}/parametros-vencimiento/" }
+        },
+        {
+          "name": "Obtener Parametro por ID",
+          "request": { "method": "GET", "url": "{{base_url}}/parametros-vencimiento/1" }
+        },
+        {
+          "name": "Actualizar Parametro",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/parametros-vencimiento/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"dias_duracion\": 180\n}" }
+          }
+        },
+        {
+          "name": "Eliminar Parametro",
+          "request": { "method": "DELETE", "url": "{{base_url}}/parametros-vencimiento/1" }
+        }
+      ]
+    },
+    {
+      "name": "Bolsa de Puntos",
+      "item": [
+        {
+          "name": "Listar Bolsas (todas)",
+          "request": { "method": "GET", "url": "{{base_url}}/bolsas-puntos/" }
+        },
+        {
+          "name": "Listar Bolsas por Cliente",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/bolsas-puntos/?cliente_id=1",
+              "query": [{ "key": "cliente_id", "value": "1" }]
+            }
+          }
+        },
+        {
+          "name": "Listar Bolsas por Rango de Puntos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/bolsas-puntos/?puntos_min=5&puntos_max=50",
+              "query": [
+                { "key": "puntos_min", "value": "5" },
+                { "key": "puntos_max", "value": "50" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Clientes con Puntos por Vencer (7 dias)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/bolsas-puntos/por-vencer?dias=7",
+              "query": [{ "key": "dias", "value": "7" }]
+            }
+          }
+        },
+        {
+          "name": "Obtener Bolsa por ID",
+          "request": { "method": "GET", "url": "{{base_url}}/bolsas-puntos/1" }
+        }
+      ]
+    },
+    {
+      "name": "Uso de Puntos",
+      "item": [
+        {
+          "name": "Listar Usos (todos)",
+          "request": { "method": "GET", "url": "{{base_url}}/uso-puntos/" }
+        },
+        {
+          "name": "Listar Usos por Cliente",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/uso-puntos/?cliente_id=1",
+              "query": [{ "key": "cliente_id", "value": "1" }]
+            }
+          }
+        },
+        {
+          "name": "Listar Usos por Concepto",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/uso-puntos/?concepto_id=1",
+              "query": [{ "key": "concepto_id", "value": "1" }]
+            }
+          }
+        },
+        {
+          "name": "Listar Usos por Fecha",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/uso-puntos/?fecha_desde=2025-01-01&fecha_hasta=2025-12-31",
+              "query": [
+                { "key": "fecha_desde", "value": "2025-01-01" },
+                { "key": "fecha_hasta", "value": "2025-12-31" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Uso por ID",
+          "request": { "method": "GET", "url": "{{base_url}}/uso-puntos/1" }
+        }
+      ]
+    },
+    {
+      "name": "Servicios",
+      "item": [
+        {
+          "name": "Cargar Puntos",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/servicios/cargar-puntos",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cliente_id\": 1,\n  \"monto_operacion\": 350000\n}"
+            }
+          }
+        },
+        {
+          "name": "Utilizar Puntos",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/servicios/utilizar-puntos",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cliente_id\": 1,\n  \"concepto_id\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Equivalencia de Puntos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/servicios/equivalencia-puntos?monto=350000",
+              "query": [{ "key": "monto", "value": "350000" }]
+            }
+          }
+        },
+        {
+          "name": "Procesar Vencimientos (manual)",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/servicios/procesar-vencimientos"
+          }
+        }
+      ]
+    }
+  ]
+}
